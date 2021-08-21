@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Uploading Form</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="js/MainApp.js"></script>
+<script src="js/UploadFileCtrl.js"></script>
+<script src="js/GetFilesCtrl.js"></script>
+
+
+</head>
+<body ng-app="MainApp">
+	<h2>Spring Boot File Upload with AngularJS</h2>
+	<div ng-controller="UploadFileController">
+		<form>
+			Description: <br /> <input type="text" name="description"
+				data-ng-model="myForm.description" style="width: 350px;" /> <br />
+			<br /> File to upload (1): <input type="file"
+				data-file-model="myForm.files[0]" /><br /> File to upload (2): <input
+				type="file" data-file-model="myForm.files[1]" /><br /> File to
+			upload (3): <input type="file" data-file-model="myForm.files[2]" /><br />
+			File to upload (4): <input type="file"
+				data-file-model="myForm.files[3]" /><br /> File to upload (5): <input
+				type="file" data-file-model="myForm.files[4]" /><br />
+			<button type="button" data-ng-click="doUploadFile()">Upload</button>
+		</form>
+		<h2>Upload Results:</h2>
+		<div style="border: 1px solid #ccc; padding: 5px;">
+			<span data-ng-bind="uploadResult"></span>
+		</div>
+	</div>
+	<!-- Get Files -->
+	<hr>
+	<div data-ng-controller="GetFilesController">
+		<button type="button" data-ng-click="getAllFiles()">Get All
+			Files</button>
+		<ul>
+			<li data-ng-repeat="file in allFiles"><a
+				href='/rest/files/{{file}}'>{{file}}</a></li>
+		</ul>
+	</div>
+
+</body>
+</html>
